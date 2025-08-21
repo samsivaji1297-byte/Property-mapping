@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sydney Property Portfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Initialize map centered on Sydney
+    const map = L.map('map').setView([-33.8837, 151.2107], 15);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Define property boundaries
+    const properties = [
+      {
+        type: "Feature",
+        properties: { type: "Residential", value: "$2.3M" },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [151.2095, -33.8845],
+            [151.2110, -33.8845],
+            [151.2110, -33.8830],
+            [151.2095, -33.8830],
+            [151.2095, -33.8845]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        properties: { type: "Commercial", value: "$4.1M" },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [151.2120, -33.8850],
+            [151.2135, -33.8850],
+            [151.2135, -33.8835],
+            [151.2120, -33.8835],
+            [151.2120, -33.8850]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        properties: { type: "Mixed-Use", value: "$3.6M" },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [151.2080, -33.8825],
+            [151.2090, -33.8825],
+            [151.2090, -33.8815],
+            [151.2080, -33.8815],
+            [151.2080, -33.8825]
+          ]]
+        }
+      }
+    ];
+
+    // Style function based on property type
+    function getStyle(feature) {
+      const colors = {
+        "Residential": "#2E8B57",
+        "Commercial": "#1E90FF",
+        "Mixed-Use": "#DAA520"
+      };
+      return {
+        color: colors[feature.properties.type] || "#555",
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.4
+      };
+    }
+
+    // Render boundaries
+    L.geoJSON(properties, {
+      style: getStyle
+    }).addTo(map);
+  </script>
+</body>
+</html>
