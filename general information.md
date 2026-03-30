@@ -1,4 +1,8 @@
 Just a placeholder for now, 
+in the red house, 56 Alamein Avenue Carlingford, the kitchen tap used from Bunnings: Kinetic Female Aerator Standard Chrome Plated, from Bunnings Store Carlingford Aisle 20.
+
+<img width="1125" height="1500" alt="image" src="https://github.com/user-attachments/assets/b115714b-8ff6-4260-a0eb-7ecf6c8e4e3d" />
+
 
 
 # 🧰 Kitchen Tap Aerator — Field Notes / Reference Guide
